@@ -6,10 +6,10 @@ import {
   IconButton,
   Spacer,
   Center,
-  Input
 } from "@chakra-ui/react";
 import { CloseIcon } from "@chakra-ui/icons";
 import styled from "@emotion/styled";
+import {TodoProps} from "types/"
 // import Checkbox from "components/atoms/CheckBox";
 const SBox = styled(Box)`
   border-radius: 5px;
@@ -22,17 +22,18 @@ const SIconButton = styled(IconButton)`
     opacity: 1;
   }
 `;
-const TodoCard = () => {
+
+
+const TodoCard: React.FC<TodoProps> = ({todoText}) => {
   return (
     <>
-      <SBox boxShadow="base" >
+      <SBox boxShadow="xs" >
         <Flex>
           <Center h="50px" mr={3}>
             <Checkbox size="lg" />
           </Center>
           <Center>
-            <Input variant="unstyled" placeholder="Create a new todo" />
-            {/* <Text color="dark">Create a new todo</Text> */}
+            <Text color="dark">{todoText}</Text>
           </Center>
           <Spacer />
           <Center>

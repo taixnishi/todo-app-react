@@ -7,7 +7,7 @@ import {
   useColorMode,
   Spacer,
 } from "@chakra-ui/react";
-import TodoCards from "components/organisms/TodoCards";
+import TodoForm from "components/organisms/TodoForm";
 const Header = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
@@ -17,7 +17,7 @@ const Header = () => {
           <Heading as="h1" my={10}>
             Todo App
           </Heading>
-          <TodoCards></TodoCards>
+          <TodoForm />
           <Flex>
             <Button onClick={toggleColorMode} mt={5}>
               Toggle {colorMode === "light" ? "Dark" : "Light"}
