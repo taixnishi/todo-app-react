@@ -12,7 +12,7 @@ import styled from "@emotion/styled";
 import { TodoType } from "types/";
 import { useEffect, useState } from "react";
 import { useAppDispatch } from "hooks/storeHooks";
-import { updateTodo } from "store/slices/todoReducer";
+import { deleteTodo, updateTodo } from "store/slices/todoReducer";
 // import Checkbox from "components/atoms/CheckBox";
 const SBox = styled(Box)`
   border-radius: 5px;
@@ -26,16 +26,14 @@ const SIconButton = styled(IconButton)`
   }
 `;
 const SText = styled(Text)`
-  text-decoration: line-through;
+  text-decoration: ${(props) => (props.ischecked ? "line-through" : "none")};
 `;
 type TodoProps = {
   todo: TodoType;
 };
 const TodoCard: React.FC<TodoProps> = ({ todo }) => {
   const { todoText, id, isChecked } = todo;
-  const deleteTodo = () => {
-    alert(`${id}:  ${todoText}`);
-  };
+
   const dispatch = useAppDispatch();
   return (
     <>
@@ -51,7 +49,9 @@ const TodoCard: React.FC<TodoProps> = ({ todo }) => {
             />
           </Center>
           <Center>
-            <SText color="dark">{todoText}</SText>
+            <SText color="dark" ischecked={isChecked ? 1 : 0}>
+              {todoText}
+            </SText>
           </Center>
           <Spacer />
           {isChecked && (
@@ -61,7 +61,7 @@ const TodoCard: React.FC<TodoProps> = ({ todo }) => {
                 icon={<CloseIcon />}
                 size="sm"
                 variant="ghost"
-                onClick={deleteTodo}
+                onClick={() => dispatch(deleteTodo({ ...todo }))}
               />
             </Center>
           )}
