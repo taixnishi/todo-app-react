@@ -1,63 +1,33 @@
 import type { NextPage } from "next";
 import TodoCard from "components/organisms/TodoCards";
-import { TodoProps } from "types";
-const Home: NextPage = ({todoList}) => {
+import { TodoType } from "types";
+import { useAppSelector } from "hooks/storeHooks";
+import { Box, Center } from "@chakra-ui/react";
+
+const Home: NextPage = () => {
+  const todoList = useAppSelector((state) => state.todo.todoList);
   return (
     <>
-    {
-      todoList.map((todo: TodoProps) => (
-        <TodoCard key={todo.id} todoText={todo.todoText} id={todo.id}/>
-      ))
-    }
+      {todoList.length === 0 ? (
+        <Center>Todo is not found.</Center>
+      ) : (
+        <>
+          {todoList.map((todo: TodoType) => (
+            <TodoCard key={todo.id} todo={todo}/>
+          ))}
+        </>
+      )}
     </>
   );
 };
 
 export default Home;
 
-
-export async function getStaticProps() {
-  const todoList = [
-    {
-      id: 1,
-      todoText: "creregregggggggggreee"
-    },
-    {
-      id: 2,
-      todoText: "creregregggggggggreee"
-    },
-    {
-      id: 3,
-      todoText: "creregregggggggggreee"
-    },
-    {
-      id: 4,
-      todoText: "creregregggggggggreee"
-    },
-    {
-      id: 5,
-      todoText: "creregregggggggggreee"
-    },
-    {
-      id: 6,
-      todoText: "creregregggggggggreee"
-    },
-    {
-      id: 7,
-      todoText: "creregregggggggggreee"
-    },
-    {
-      id: 8,
-      todoText: "creregregggggggggreee"
-    },
-    {
-      id: 9,
-      todoText: "creregregggggggggreee"
-    },
-  ]
-  return {
-    props: {
-      todoList
-    }
-  }
-}
+// export async function getStaticProps() {
+//   const todoList = useAppSelector(state => state.todo.todoList)
+//   return {
+//     props: {
+//       todoList,
+//     },
+//   };
+// }

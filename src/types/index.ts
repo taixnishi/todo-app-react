@@ -1,4 +1,5 @@
-export type TodoProps = {
+export type TodoType = {
     id: number
-    todoText: string
+    todoText: string,
+    isChecked: boolean
 }
