@@ -41,9 +41,7 @@ const TodoCard: React.FC<TodoProps> = ({ todo }) => {
             />
           </Center>
           <Center>
-            <SText color="dark" ischecked={isChecked ? 1 : 0}>
-              {todoText}
-            </SText>
+            <SText ischecked={isChecked ? 1 : 0}>{todoText}</SText>
           </Center>
           <Spacer />
           {isChecked && (
