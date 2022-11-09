@@ -2,18 +2,18 @@ import type { NextPage } from "next";
 import TodoCard from "components/organisms/TodoCards";
 import { TodoType } from "types";
 import { useAppSelector } from "hooks/storeHooks";
-import { Box, Center } from "@chakra-ui/react";
+import { Center } from "@chakra-ui/react";
 
 const Home: NextPage = () => {
   const todoList = useAppSelector((state) => state.todo.todoList);
   return (
     <>
       {todoList.length === 0 ? (
-        <Center>Todo is not found.</Center>
+        <Center fontSize='2xl' color="GrayText">Todo is not found.</Center>
       ) : (
         <>
           {todoList.map((todo: TodoType) => (
-            <TodoCard key={todo.id} todo={todo}/>
+            <TodoCard key={todo.id} todo={todo} />
           ))}
         </>
       )}

@@ -4,30 +4,34 @@ import {
   Heading,
   Container,
   Button,
-  useColorMode,
   Spacer,
 } from "@chakra-ui/react";
-import TodoForm from "components/organisms/TodoInput";
+import TodoInput from "components/organisms/TodoInput";
 import { useAppDispatch, useAppSelector } from "hooks/storeHooks";
-import { FormProvider, useForm } from "react-hook-form";
+import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { addTodo, clearTodoList } from "store/slices/todoReducer";
 import { TodoType } from "types";
 
+type FormValues = {
+  isChecked: boolean;
+  todoText: string;
+};
 const Header = () => {
-  const methods = useForm();
-  const todoList = useAppSelector((state) => state.todo.todoList);
+  const methods = useForm<FormValues>();
   const dispatch = useAppDispatch();
-  function onSubmit(values: any) {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        console.log(values);
-        const newTodo: TodoType = { ...values, id: todoList.length + 1};
-        dispatch(addTodo(newTodo));
-        methods.reset();
-        resolve("ok");
-      }, 500);
-    });
-  }
+  const todoList = useAppSelector((state) => state.todo.todoList);
+
+  const onSubmit: SubmitHandler<FormValues> = (values) => {
+    const newTodo: TodoType = { ...values, id: todoList.length + 1 };
+    dispatch(addTodo(newTodo));
+    methods.reset();
+  };
+
+  const deleteAllItems = (): void => {
+    const isConfirm = confirm("Are you sure you want to delete everything?");
+    if (isConfirm) dispatch(clearTodoList());
+  };
+
   return (
     <header>
       <Box bg="teal" p={3} h="300px">
@@ -38,11 +42,8 @@ const Header = () => {
           {/* form */}
           <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(onSubmit)}>
-              <TodoForm />
+              <TodoInput />
               <Flex>
-                {/* <Button onClick={toggleColorMode} mt={5}>
-                  Toggle {colorMode === "light" ? "Dark" : "Light"}
-                </Button> */}
                 <Spacer />
                 <Button
                   mt={5}
@@ -50,7 +51,17 @@ const Header = () => {
                   isLoading={methods.formState.isSubmitting}
                   type="submit"
                 >
-                  追加
+                  Add
+                </Button>
+
+                <Button
+                  ml={3}
+                  mt={5}
+                  colorScheme="red"
+                  onClick={deleteAllItems}
+                  disabled={todoList.length > 0 ? false : true}
+                >
+                  Delete All
                 </Button>
               </Flex>
             </form>

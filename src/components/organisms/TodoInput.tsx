@@ -2,14 +2,11 @@ import {
   Box,
   Checkbox,
   Flex,
-  IconButton,
   Spacer,
   Center,
   Input,
-  Button,
 } from "@chakra-ui/react";
 import styled from "@emotion/styled";
-import { useEffect, useState } from "react";
 import { useFormContext } from "react-hook-form";
 
 // import Checkbox from "components/atoms/CheckBox";
@@ -18,18 +15,8 @@ const SBox = styled(Box)`
   padding: 10px;
   background-color: white;
 `;
-const SIconButton = styled(IconButton)`
-  opacity: 0;
-  &:hover {
-    opacity: 1;
-  }
-`;
 const TodoInput = () => {
   const { register } = useFormContext(); // retrieve all hook methods
-  const [isChecked, setIsChecked] = useState(false);
-  // useEffect(() => {
-  //   console.log(isChecked);
-  // }, [isChecked])
   return (
     <>
       <SBox boxShadow="base">
