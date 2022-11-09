@@ -34,9 +34,9 @@ const Header = () => {
 
   return (
     <header>
-      <Box bg="teal" p={3} h="300px">
+      <Box bg="#258F67" p={3} h="300px">
         <Container>
-          <Heading as="h1" my={10}>
+          <Heading as="h1" my={10} color="#F5F3E8">
             Todo App
           </Heading>
           {/* form */}
@@ -47,7 +47,7 @@ const Header = () => {
                 <Spacer />
                 <Button
                   mt={5}
-                  colorScheme="telegram"
+                  colorScheme="facebook"
                   isLoading={methods.formState.isSubmitting}
                   type="submit"
                 >

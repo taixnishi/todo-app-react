@@ -27,7 +27,7 @@ const TodoInput = () => {
               {...register("isChecked")}
             />
           </Center>
-          <Center>
+          <Center w="100%">
             <Input
               id="todoText"
               variant="unstyled"
@@ -41,7 +41,6 @@ const TodoInput = () => {
               })}
             />
           </Center>
-          <Spacer />
         </Flex>
       </SBox>
     </>

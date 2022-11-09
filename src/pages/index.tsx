@@ -9,7 +9,7 @@ const Home: NextPage = () => {
   return (
     <>
       {todoList.length === 0 ? (
-        <Center fontSize='2xl' color="GrayText">Todo is not found.</Center>
+        <Center fontSize='2xl' color="#214842" mt="60">Todo is not found.</Center>
       ) : (
         <>
           {todoList.map((todo: TodoType) => (

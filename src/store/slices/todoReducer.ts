@@ -7,13 +7,7 @@ interface TodoState {
 }
 
 const initialState: TodoState = {
-  todoList: [
-    {
-      id: 1,
-      todoText: "todo",
-      isChecked: false,
-    },
-  ],
+  todoList: [],
 };
 
 export const todoSlice = createSlice({
