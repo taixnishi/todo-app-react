@@ -35,7 +35,10 @@ const TodoInput = () => {
       <SBox boxShadow="base">
         <Flex>
           <Center h="50px" mr={3}>
-            <Checkbox size="lg"/>
+            <Checkbox
+              size="lg"
+              {...register("isChecked")}
+            />
           </Center>
           <Center>
             <Input

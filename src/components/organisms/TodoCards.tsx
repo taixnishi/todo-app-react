@@ -33,8 +33,8 @@ type TodoProps = {
 };
 const TodoCard: React.FC<TodoProps> = ({ todo }) => {
   const { todoText, id, isChecked } = todo;
-
   const dispatch = useAppDispatch();
+  console.log(todoText, isChecked);
   return (
     <>
       <SBox boxShadow="xs">
@@ -42,7 +42,7 @@ const TodoCard: React.FC<TodoProps> = ({ todo }) => {
           <Center h="50px" mr={3}>
             <Checkbox
               size="lg"
-              checked={isChecked}
+              isChecked={isChecked}
               onChange={() =>
                 dispatch(updateTodo({ ...todo, isChecked: !isChecked }))
               }

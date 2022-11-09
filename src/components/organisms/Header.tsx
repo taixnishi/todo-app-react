@@ -20,7 +20,8 @@ const Header = () => {
   function onSubmit(values: any) {
     return new Promise((resolve) => {
       setTimeout(() => {
-        const newTodo: TodoType = { ...values, id: todoList.length + 1 , isChecked: false};
+        console.log(values);
+        const newTodo: TodoType = { ...values, id: todoList.length + 1};
         dispatch(addTodo(newTodo));
         methods.reset();
         resolve("ok");
