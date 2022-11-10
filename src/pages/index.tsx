@@ -15,6 +15,7 @@ const Home: NextPage = () => {
           {todoList.map((todo: TodoType) => (
             <TodoCard key={todo.id} todo={todo} />
           ))}
+          
         </>
       )}
     </>

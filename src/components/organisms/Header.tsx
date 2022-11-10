@@ -11,7 +11,12 @@ import {
 } from "@chakra-ui/react";
 import TodoInput from "components/organisms/TodoInput";
 import { useAppDispatch, useAppSelector } from "hooks/storeHooks";
-import { FieldError, FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import {
+  FieldError,
+  FormProvider,
+  SubmitHandler,
+  useForm,
+} from "react-hook-form";
 import { addTodo, clearTodoList } from "store/slices/todoReducer";
 import { TodoType } from "types";
 
@@ -40,7 +45,7 @@ const Header = () => {
     <header>
       <Box bg="#258F67" p={3} h="300px">
         <Container>
-          <Heading as="h1" my={10} color="#F5F3E8">
+          <Heading as="h1" my={7} color="#F5F3E8">
             Todo App
           </Heading>
           {/* form */}
@@ -49,16 +54,15 @@ const Header = () => {
               <FormControl isInvalid={isInvalidStatus}>
                 <TodoInput />
                 <FormErrorMessage pos="absolute">
-                  <Heading size="sm" color="black">
-                    {methods.formState.errors.todoText &&
-                      "最低1文字以上入力してください"}
+                  <Heading size="sm" color="#F5F3E8">
+                    最低1文字以上入力してください
                   </Heading>
                 </FormErrorMessage>
               </FormControl>
               <Flex>
                 <Spacer />
                 <Button
-                  mt={5}
+                  mt={8}
                   colorScheme="facebook"
                   isLoading={methods.formState.isSubmitting}
                   type="submit"
@@ -68,7 +72,7 @@ const Header = () => {
 
                 <Button
                   ml={3}
-                  mt={5}
+                  mt={8}
                   colorScheme="red"
                   onClick={deleteAllItems}
                   disabled={todoList.length > 0 ? false : true}
