@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import TodoInput from "components/organisms/TodoInput";
 import { useAppDispatch, useAppSelector } from "hooks/storeHooks";
-import { FormProvider, SubmitHandler, useForm } from "react-hook-form";
+import { FieldError, FormProvider, SubmitHandler, useForm } from "react-hook-form";
 import { addTodo, clearTodoList } from "store/slices/todoReducer";
 import { TodoType } from "types";
 
@@ -35,6 +35,7 @@ const Header = () => {
     if (isConfirm) dispatch(clearTodoList());
   };
 
+  const isInvalidStatus = methods.formState.errors.todoText ? true : false;
   return (
     <header>
       <Box bg="#258F67" p={3} h="300px">
@@ -45,7 +46,7 @@ const Header = () => {
           {/* form */}
           <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(onSubmit)}>
-              <FormControl isInvalid={methods.formState.errors.todoText}>
+              <FormControl isInvalid={isInvalidStatus}>
                 <TodoInput />
                 <FormErrorMessage pos="absolute">
                   <Heading size="sm" color="black">
