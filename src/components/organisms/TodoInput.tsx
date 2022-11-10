@@ -1,11 +1,4 @@
-import {
-  Box,
-  Checkbox,
-  Flex,
-  Spacer,
-  Center,
-  Input,
-} from "@chakra-ui/react";
+import { Box, Checkbox, Flex, Spacer, Center, Input } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import { useFormContext } from "react-hook-form";
 
@@ -22,10 +15,7 @@ const TodoInput = () => {
       <SBox boxShadow="base">
         <Flex>
           <Center h="50px" mr={3}>
-            <Checkbox
-              size="lg"
-              {...register("isChecked")}
-            />
+            <Checkbox size="lg" {...register("isChecked")} />
           </Center>
           <Center w="100%">
             <Input
@@ -35,8 +25,8 @@ const TodoInput = () => {
               {...register("todoText", {
                 required: "This is required",
                 minLength: {
-                  value: 4,
-                  message: "Minimum length should be 4",
+                  value: 1,
+                  message: "Minimum length should be 1",
                 },
               })}
             />
