@@ -3,7 +3,6 @@ import type { AppProps } from "next/app";
 import { Box, ChakraProvider } from "@chakra-ui/react";
 import { Container } from "@chakra-ui/react";
 import Header from "components/organisms/Header";
-import theme from "theme/theme";
 import { Provider } from "react-redux";
 import { store } from "store/inidex";
 import styled from "@emotion/styled";
@@ -14,7 +13,7 @@ height: 100vh;
 `
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ChakraProvider theme={theme}>
+    <ChakraProvider>
       <Provider store={store}>
         <SBox>
           <Header />
