@@ -1,5 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Simple TodoApp with Next.js&Redux
 
+<img width="1436" alt="スクリーンショット 2022-11-10 23 51 31" src="https://user-images.githubusercontent.com/66266385/201124277-ee4ee719-7958-4ae4-a887-9f8ff1a984f0.png">
 ## Getting Started
 
 First, run the development server:
