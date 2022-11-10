@@ -1,4 +1,4 @@
-import { Box, Checkbox, Flex, Spacer, Center, Input } from "@chakra-ui/react";
+import { Box, Checkbox, Flex, Spacer, Center, Input, FormErrorMessage, Heading } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import { useFormContext } from "react-hook-form";
 

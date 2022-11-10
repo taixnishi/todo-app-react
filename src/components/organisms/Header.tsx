@@ -5,6 +5,9 @@ import {
   Container,
   Button,
   Spacer,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
 } from "@chakra-ui/react";
 import TodoInput from "components/organisms/TodoInput";
 import { useAppDispatch, useAppSelector } from "hooks/storeHooks";
@@ -42,7 +45,15 @@ const Header = () => {
           {/* form */}
           <FormProvider {...methods}>
             <form onSubmit={methods.handleSubmit(onSubmit)}>
-              <TodoInput />
+              <FormControl isInvalid={methods.formState.errors.todoText}>
+                <TodoInput />
+                <FormErrorMessage pos="absolute">
+                  <Heading size="sm" color="black">
+                    {methods.formState.errors.todoText &&
+                      "最低1文字以上入力してください"}
+                  </Heading>
+                </FormErrorMessage>
+              </FormControl>
               <Flex>
                 <Spacer />
                 <Button
